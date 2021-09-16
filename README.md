@@ -1,1 +1,1 @@
-# Self-Teach-Lab
+# Self-Teach Lab
