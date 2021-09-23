@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -31,4 +37,6 @@ Route::resource('/comments',CommentController::class)->middleware('auth');
 Route::get('/posts', [App\Http\Controllers\PostController::class, 'posts'])->name('posts');
 // post details page
 Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'posts_detail'])->name('posts_detail');
+
+
 
