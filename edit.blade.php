@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <section class="card">
                     <header class="card-header" style="color: Black;text-transform: capitalize;font-weight: bold; ">
-                        Update POST 
+                        Update Category Information
 
                         @if(Session::has('updatesuccess'))
                         <div class="alert alert-success mt-2">
@@ -22,27 +22,14 @@
 
                     </header>
                     <div class="card-body">
-                        <form action="{{ route('blogs.update',$blog->id) }}" method="POST">
+                        <form action="{{ route('categories.update', $category->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="category">Category</label>
-                                        <select name="category" id="category" class="form-control select2box">
-                                            <option value="" disabled selected>Select Category</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{$category->id}}"  {{$category->id==$blog->category_id ? "selected":""}} >{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>  
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="post">POST</label>
-                                        <textarea name="post" id="post" class="form-control" cols="30" rows="10"> {!! $blog->post !!} </textarea>
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name" required id="name" value="{{$category->name}}" placeholder="Category Name">
                                     </div>
                                 </div>
                             </div>  

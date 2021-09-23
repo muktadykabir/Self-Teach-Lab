@@ -11,7 +11,7 @@
             <div class="col-lg-12">
                 <section class="card">
                     <header class="card-header" style="color: Black;text-transform: capitalize;font-weight: bold; ">
-                        POST Information
+                        Category Information
                         @if(Session::has('deletesuccess'))
                         <div class="alert alert-success mt-2">
                             {{session('deletesuccess')}}
@@ -32,7 +32,6 @@
                                     <tr>
                                         <th>Sl No</th>
                                         <th>Category Name</th>
-                                        <th>POST</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -40,17 +39,16 @@
                                     @php
                                     $n = 1;
                                     @endphp
-                                    @foreach($blogs as $blog)
+                                    @foreach($categories as $category)
                                     <tr>
                                         <td>{{$n++}}</td>
-                                        <td>{{$blog->category->name}}</td>
-                                        <td>{!! substr($blog->post,0,30) !!}</td>
+                                        <td>{{$category->name}}</td>
                                         <td>
-                                            <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
+                                            <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger">Delete</button>
-                                                <a class="btn btn-info" href="{{route('blogs.edit', $blog->id)}}"> Edit</a>
+                                                <a class="btn btn-info" href="{{route('categories.edit', $category->id)}}"> Edit</a>
                                             </form>
                                         </td>
                                     </tr>
